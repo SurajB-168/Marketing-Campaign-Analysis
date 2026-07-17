@@ -52,6 +52,8 @@ Six new metrics were built with Excel formulas on top of the raw fields:
 | ROI (%) | `(Revenue − Budget Spent) / Budget Spent × 100` |
 | Profit/Loss | `Revenue − Budget Spent` |
 
+> **Note on ROI:** the `ROI (%)` cells in the workbook currently store `(Revenue − Budget) / Budget` *without* the `× 100` multiplication, even though the column is labeled as a percentage. All ROI figures below have been corrected by multiplying the sheet's raw values by 100 to reflect the formula as documented. Rankings and relative comparisons are unaffected — only the absolute percentages change.
+
 ## 📊 PivotTables & Charts
 
 Built a separate PivotTable and visualization layer on top of the cleaned data:
@@ -67,24 +69,28 @@ Built a separate PivotTable and visualization layer on top of the cleaned data:
   - Line chart — Conversions over time (monthly trend)
   - Scatter chart — Budget vs. Revenue by channel (with data labels)
 
+![Dashboard](Charts.png)
+
+*Google Ads and TV pull in the largest budgets, but revenue tells a different story — Google Ads converts that spend into by far the most revenue, while TV's revenue barely clears its budget line.*
+
 ---
 
 ## 🔍 Key Insights
 
 **Email is the best-performing channel by far.**
-Email delivers the highest ROI (**75% overall**, 81% average per campaign) despite getting only ~3% of total budget. It's also the cheapest channel to run — lowest cost per click (₹2.44), lowest cost per conversion (₹44.58) — and has the highest CTR (4.3%) and conversion rate (6.0%).
+Email delivers the highest ROI (**7,504% overall**, 8,079% average per campaign) despite getting only ~3% of total budget. It's also the cheapest channel to run — lowest cost per click (₹2.44), lowest cost per conversion (₹44.58) — and has the highest CTR (4.3%). Google Ads edges it out on conversion rate (7.8% vs. Email's 6.0%), but Email's rock-bottom cost base is what drives its outsized ROI.
 
 **29 campaigns are running at a loss — every single one is TV or Radio.**
-18 of 40 TV campaigns and 11 of 16 Radio campaigns are loss-making. Not one Email, Google Ads, or Social Media campaign lost money. The worst campaign (TV) costs ₹7,104 per conversion — over 150× Email's average cost per conversion.
+18 of 40 TV campaigns and 11 of 16 Radio campaigns are loss-making. Not one Email, Google Ads, or Social Media campaign lost money. The worst-performing campaigns on cost per conversion — a TV campaign and a Social Media campaign tied at ₹7,104 per conversion — cost roughly 160× Email's average cost per conversion.
 
 **TV gets the biggest budget but the second-worst ROI.**
-TV absorbs ~40% of total spend and generates 26.5 crore impressions, but that reach barely converts — Overall ROI is just 0.32%. High visibility ≠ high return.
+TV absorbs ~40% of total spend and generates 26.5 crore impressions, but that reach barely converts — Overall ROI is just 32.5%, second-lowest after Radio (0.9%). High visibility ≠ high return.
 
 **Budget allocation doesn't match performance.**
-Google Ads is the single biggest revenue driver (₹37.7 Cr) with a solid 33% ROI, while Email — the best ROI performer — is starved of budget.
+Google Ads is the single biggest revenue driver (₹37.7 Cr) with a strong 3,264% ROI, while Email — the best ROI performer of all — is starved of budget.
 
 **Data quality flags worth investigating before trusting totals:**
-- Campaign C211 posted an outlier 436% ROI, well clear of the next-best campaign (243%)
+- Campaign C211 posted an outlier 43,648% ROI, well clear of the next-best campaign (24,322%)
 - 4 campaigns have no recorded revenue at all — a gap worth chasing upstream before it's factored into channel totals
 
 ---
@@ -92,7 +98,7 @@ Google Ads is the single biggest revenue driver (₹37.7 Cr) with a solid 33% RO
 ## ✅ Business Recommendations
 
 1. **Increase Email's budget** — best ROI in the dataset, currently the smallest allocation
-2. **Keep scaling Google Ads** — largest revenue driver with solid ROI
+2. **Keep scaling Google Ads** — largest revenue driver with the best conversion rate and a strong ROI
 3. **Cut the 29 loss-making TV and Radio campaigns**
 4. **Reduce overall TV and Radio spend** and reinvest the freed budget into Email and Google Ads
 5. **Investigate the C211 outlier and the 4 missing-revenue campaigns** before relying on totals that include them
